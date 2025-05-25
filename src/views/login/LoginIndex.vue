@@ -53,7 +53,8 @@ const formModel = ref({
             block
             type="info"
             native-type="submit"
-            >提交</van-button
+            @click="this.$router.push({ path: '/home' })"
+            >登入</van-button
           >
         </div>
       </van-form>

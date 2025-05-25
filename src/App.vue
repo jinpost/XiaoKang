@@ -5,7 +5,7 @@
 
 <template>
  <div>
-  <div>测试</div>
+  <div></div>
   <router-view></router-view>
  </div>
 </template>

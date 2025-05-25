@@ -3,8 +3,18 @@ import { createRouter, createWebHistory } from 'vue-router'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: '/', redirect: '/login' },
-    { path: '/login', name: 'login', component: () => import('@/views/login/LoginIndex.vue') }
+    { path: '/login', name: 'login', component: () => import('@/views/login/LoginIndex.vue') },
+    {
+      path: '/',
+      component: () => import('@/views/layout/LayoutIndex.vue'),
+      redirect: '/home',// 这个是重定向
+      children: [
+        {
+          path: '/home',
+          component: () => import('@/views/layout/home/index.vue')
+        },
+      ]
+    },
   ],
 })
 
