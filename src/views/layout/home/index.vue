@@ -1,7 +1,7 @@
 <script setup></script>
 <template>
   <!-- 意义不明的搜索栏(占着再说) -->
-  <van-nav-bar left-text="返回" left-arrow>
+  <van-nav-bar left-arrow>
     <template #left>
       <div>logo</div>
     </template>
@@ -17,6 +17,15 @@
     </template>
   </van-nav-bar>
   <!-- 博客文章列表 -->
-  
+  <div class="Blog_post_list">
+    <BlogPost></BlogPost>
+  </div>
+  <!-- 底部分页 -->
+   <van-pagination v-model="currentPage" :total-items="24" :items-per-page="5" />
 </template>
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.Blog_post_list {
+  margin: auto;
+  width: 80%;
+}
+</style>
