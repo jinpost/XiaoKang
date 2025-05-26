@@ -1,4 +1,9 @@
-<script setup></script>
+<script setup>
+  const handleClick = () =>{
+    // 跳转到详情页
+    
+  }
+</script>
 <template>
   <!-- 意义不明的搜索栏(占着再说) -->
   <van-nav-bar left-arrow>
@@ -18,7 +23,7 @@
   </van-nav-bar>
   <!-- 博客文章列表 -->
   <div class="Blog_post_list">
-    <BlogPost></BlogPost>
+    <BlogPost @click="handleClick"></BlogPost>
   </div>
   <!-- 底部分页 -->
    <van-pagination v-model="currentPage" :total-items="24" :items-per-page="5" />

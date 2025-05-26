@@ -5,8 +5,17 @@
     <link rel="icon" href="/XiaoKang/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vite App</title>
-    <script type="module" crossorigin src="/XiaoKang/assets/index-CzcJHs5s.js"></script>
+    <script type="module" crossorigin src="/XiaoKang/assets/index-CfU8EYJf.js"></script>
   </head>
+  <script>
+  (function () {
+    const redir = sessionStorage.redirect;
+    delete sessionStorage.redirect;
+    if (redir && redir !== location.href) {
+      history.replaceState(null, null, redir);
+    }
+  })();
+</script>
   <body>
     <div id="app"></div>
   </body>

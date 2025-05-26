@@ -1,0 +1,1 @@
+import{_ as t,b as n,e as r,a,g as s,F as c,o as _}from"./index-CfU8EYJf.js";const l={};function u(d,e){const o=s("router-view");return _(),n(c,null,[e[0]||(e[0]=r("div",null,"先占个位置",-1)),a(o)],64)}const f=t(l,[["render",u]]);export{f as default};
