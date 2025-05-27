@@ -1,9 +1,65 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
+
+// 登入验证
 const formModel = ref({
   username: '',
   password: '',
+})
+const onSubmit = () => {
+  if (
+    formModel.value.username === 'jinpost' &&
+    formModel.value.password === '123456'
+  ) {
+    // 模拟登录成功
+    router.push('/home') // 使用 router.push 跳转
+  } else {
+    // 模拟登录失败
+    alert('用户名或密码错误！')
+  }
+}
+
+// 注册验证
+const formModel2 = ref({
+  username: '',
+  password: '',
+  password2: '',
+})
+const onSubmit2 = () => {
+  console.log(formModel2.value)
+  alert('我没写这里的功能')
+}
+
+// 导航栏左侧返回功能
+const onClickLeft = () => {
+  router.go(-1) // 返回上一页
+}
+
+// 切换登入和注册状态
+const visible2 = ref(false)
+const onClickRight = () => {
+  if (visible.value === true) {
+    visible.value = false
+    setTimeout(() => {
+      visible2.value = true
+    }, 500)
+  } else {
+    visible2.value = false
+    setTimeout(() => {
+      visible.value = true
+    }, 500)
+  }
+}
+
+// 进入登入页面时的动画
+const visible = ref(false)
+onMounted(() => {
+  setTimeout(() => {
+    visible.value = true
+  }, 500)
 })
 </script>
 
@@ -20,73 +76,131 @@ const formModel = ref({
       />
     </div>
 
-    <div class="login-index">
-      <van-form @submit="onSubmit">
-        <van-field
-          v-model="formModel.username"
-          name="用户名"
-          label="用户名"
-          placeholder="用户名"
-          :rules="[
-            {
-              required: true,
-              message: '请填写用户名',
-            },
-          ]"
-        />
-        <van-field
-          v-model="formModel.password"
-          type="password"
-          name="密码"
-          label="密码"
-          placeholder="密码"
-          :rules="[
-            {
-              required: true,
-              message: '请填写密码',
-            },
-          ]"
-        />
-        <div style="margin: 30px">
-          <van-button
-            round
-            block
-            type="info"
-            native-type="submit"
-            @click="this.$router.push({ path: '/home' })"
-            >登入</van-button
-          >
-        </div>
-      </van-form>
-    </div>
+    <!--这里是登入页面的主要内容附加了没什么用的动画代码(但是很酷) -->
+    <transition name="van-slide-down">
+      <div v-show="visible" class="login-index">
+        <van-form @submit="onSubmit">
+          <van-field
+            v-model="formModel.username"
+            name="用户名"
+            label="用户名"
+            placeholder="用户名"
+            :rules="[
+              {
+                required: true,
+                message: '请填写用户名',
+              },
+            ]"
+          />
+          <van-field
+            v-model="formModel.password"
+            type="password"
+            name="密码"
+            label="密码"
+            placeholder="密码"
+            :rules="[
+              {
+                required: true,
+                message: '请填写密码',
+              },
+            ]"
+          />
+          <div style="margin: 30px">
+            <van-button
+              round
+              block
+              type="info"
+              native-type="submit"
+              >登入</van-button
+            >
+          </div>
+        </van-form>
+      </div>
+    </transition>
+
+    <!-- 这里是注册页面的主要内容并且也附加了没什么用的动画代码 -->
+    <transition name="van-slide-down">
+      <div v-show="visible2" class="login-index">
+        <van-form @submit="onSubmit2">
+          <van-field
+            v-model="formModel2.username"
+            name="用户名"
+            label="用户名"
+            placeholder="用户名"
+            :rules="[
+              {
+                required: true,
+                message: '请填写用户名',
+              },
+            ]"
+          />
+          <van-field
+            v-model="formModel2.password"
+            type="password"
+            name="密码"
+            label="密码"
+            placeholder="密码"
+            :rules="[
+              {
+                required: true,
+                message: '请填写密码',
+              },
+            ]"
+          />
+          <van-field
+            v-model="formModel2.password2"
+            type="password"
+            name="确认密码"
+            label="确认密码"
+            placeholder="密码"
+            :rules="[
+              {
+                required: true,
+                message: '请填写确认密码',
+              },
+            ]"
+          />
+          <div style="margin: 30px">
+            <van-button
+              round
+              block
+              type="info"
+              native-type="submit"
+              >注册</van-button
+            >
+          </div>
+        </van-form>
+      </div>
+    </transition>
   </div>
 </template>
 
-<style lang="less">
-  /* 导航栏 - 更精致的渐变 */
-  .van-nav-bar {
-    background: linear-gradient(135deg, #1976d2 0%, #1e88e5 100%);
-    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.15);
-    
-    .van-nav-bar__title {
-      color: white;
-      font-size: 18px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-    .van-nav-bar__text,
-    .van-nav-bar__arrow {
-      color: rgba(255, 255, 255, 0.95);
-      font-size: 15px;
-    }
+<style scoped lang="less">
+/* 导航栏 - 更精致的渐变 */
+.van-nav-bar {
+  background: linear-gradient(
+    135deg,
+    #1976d2 0%,
+    #1e88e5 100%
+  );
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.15);
+
+  .van-nav-bar__title {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
   }
+  .van-nav-bar__text,
+  .van-nav-bar__arrow {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 15px;
+  }
+}
 
-  
 .login-index {
-
   min-height: 100px;
   padding: 0;
-
 
   /* 表单容器 - 更精致的卡片效果 */
   .van-form {
@@ -128,8 +242,9 @@ const formModel = ref({
     /* 输入框聚焦效果 - 更细腻 */
     &:focus-within {
       border-color: #1e88e5;
-      box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.15), 
-                  inset 0 1px 2px rgba(0, 0, 0, 0.03);
+      box-shadow:
+        0 0 0 2px rgba(25, 118, 210, 0.15),
+        inset 0 1px 2px rgba(0, 0, 0, 0.03);
       transform: translateY(-1px);
       background-color: white;
     }
@@ -137,7 +252,11 @@ const formModel = ref({
 
   /* 按钮样式 - 更精致的交互 */
   .van-button--info {
-    background: linear-gradient(135deg, #1976d2 0%, #1e88e5 100%);
+    background: linear-gradient(
+      135deg,
+      #1976d2 0%,
+      #1e88e5 100%
+    );
     border: none;
     border-radius: 12px;
     height: 48px;
@@ -169,6 +288,5 @@ const formModel = ref({
     width: 50%;
     border-radius: 3px;
   }
-  
 }
 </style>

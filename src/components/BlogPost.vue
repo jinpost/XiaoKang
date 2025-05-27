@@ -1,10 +1,19 @@
 <script setup >
   import { ref } from 'vue'
+  import { useRouter } from 'vue-router'
+
   const DatePosted = ref(new Date().toLocaleDateString('zh-CN'))
   console.log(DatePosted)
+
+  const router = useRouter()
+  const handleClick = () => {
+  // 跳转到详情页
+  router.push({ name: 'article' })
+}
 </script>
 
 <template>
+  <div @click="handleClick">
     <div class="Blog_post_cover_image"></div>
     <div class="Blog_post_title">这是标题</div>
     <div class="Blog_post_abstract">这是简介</div>
@@ -13,6 +22,7 @@
       <van-col span="8" style="text-align: center;">这是作者</van-col>
       <van-col span="8" style="text-align: right;">这是阅读量</van-col>
     </van-row>
+  </div>
 </template>
 
 <style scoped lang="less">

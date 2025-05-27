@@ -1,0 +1,1 @@
+import{_ as t,b as n,e as r,a,i as s,F as c,f as _}from"./index-tiaDzyvy.js";const l={};function u(d,e){const o=s("router-view");return _(),n(c,null,[e[0]||(e[0]=r("div",null,"先占个位置",-1)),a(o)],64)}const i=t(l,[["render",u]]);export{i as default};
