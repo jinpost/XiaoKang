@@ -176,8 +176,11 @@ onMounted(() => {
 </template>
 
 <style scoped lang="less">
+::v-deep .van-button__text{
+  color: #fff !important;
+}
 /* 导航栏 - 更精致的渐变 */
-.van-nav-bar {
+::v-deep .van-nav-bar {
   background: linear-gradient(
     135deg,
     #1976d2 0%,

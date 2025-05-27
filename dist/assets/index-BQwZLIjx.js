@@ -1,1 +1,0 @@
-import{N as o}from"./index-w7905Dpb.js";import{_ as a,s as n,w as e,f as s,e as f,h as l}from"./index-tiaDzyvy.js";const _={};function i(c,t){const r=o;return s(),n(r,{"left-text":"返回","left-arrow":""},{title:e(()=>t[0]||(t[0]=[l(" 博客文章 ")])),right:e(()=>t[1]||(t[1]=[f("div",null,null,-1)])),_:1})}const m=a(_,[["render",i]]);export{m as default};
