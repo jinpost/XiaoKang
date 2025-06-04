@@ -8,10 +8,20 @@
   </template>
   <template #right>
     <div>
-      
+      收藏
     </div>
   </template>
 </van-nav-bar>
+<div>
+<span>文章内容</span>
+</div>
+<div>
+<button>点赞</button>
+<button>评论</button>
+</div>
+<div>
+  <span>评论区</span>
+</div>
 </template>
 <style scoped lang="less">
 </style>  

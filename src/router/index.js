@@ -4,10 +4,11 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/login', name: 'login', component: () => import('@/views/login/LoginIndex.vue') },
+    { path: '/hello', name: 'hello', component: () => import('@/views/Hello/index.vue') },
     {
       path: '/',
       component: () => import('@/views/layout/LayoutIndex.vue'),
-      redirect: '/home',// 这个是重定向
+      redirect: '/hello',// 这个是重定向
       children: [
         {
           path: '/home',
