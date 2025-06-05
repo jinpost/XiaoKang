@@ -13,7 +13,7 @@ const printCharacters = () => {
   console.log(newArr.value.join('')) // 每次添加后立即打印字符串
 
   if (i < arr.length) {
-    setTimeout(printCharacters, 300)
+    setTimeout(printCharacters, 200)
   } else {
     i = 0
     // newArr.value.length = 0 // 清空响应式数组
@@ -22,7 +22,7 @@ const printCharacters = () => {
   }
 }
 
-setTimeout(printCharacters, 300)
+setTimeout(printCharacters, 200)
 </script>
 
 <template>
@@ -44,10 +44,6 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: url('../../assets/dog.jpg');
-  background-size: cover; /* 使背景图片覆盖整个容器，保持宽高比 */
-  background-position: center; /* 使背景图片居中 */
-  background-repeat: no-repeat;
   .bac-text {
     background-color: rgba(255, 255, 255, 0.1);
     margin: 0 auto; /* 使内容居中 */
